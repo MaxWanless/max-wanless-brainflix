@@ -1,0 +1,40 @@
+@use "../../styles/_partials/colors" as *;
+@use "../../styles/_partials/fonts" as *;
+@use "../../styles/_partials/mixins" as *;
+@use "../../styles/_partials/variables" as *;
+
+.video-data {
+  display: flex;
+  flex-direction: column;
+  &__title {
+    font-size: 2rem;
+  }
+  &__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    margin: 1rem 0;
+    border-top: 1px solid $secondary-color-mercury;
+    border-bottom: 1px solid $secondary-color-mercury;
+    @include tablet {
+      justify-content: space-between;
+    }
+  }
+  &-info {
+    width: 150px;
+    @include tablet {
+      width: auto;
+      display: flex;
+      flex-direction: row;
+    }
+    &__container {
+      margin: 1rem 0;
+      display: flex;
+    }
+    &__text {
+      &--bold {
+        font-weight: 700;
+      }
+    }
+  }
+}
