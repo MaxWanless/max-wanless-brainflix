@@ -1,0 +1,19 @@
+@use "../../styles/_partials/global" as *;
+@use "../../styles/_partials/colors" as *;
+@use "../../styles/_partials/fonts" as *;
+@use "../../styles/_partials/mixins" as *;
+@use "../../styles/_partials/variables" as *;
+
+.player {
+  width: 100%;
+
+  @include tablet {
+    width: auto;
+    height: 25rem;
+  }
+  &__container {
+    display: flex;
+    justify-content: center;
+    background-color: $secondary-color-dark-black;
+  }
+}
