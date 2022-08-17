@@ -1,11 +1,11 @@
 import "./VideoList.scss";
 import VideoCard from "../VideoCard/VideoCard";
 
-const VideoList = () => {
+const VideoList = (props) => {
   return (
     <div className="video-list">
       <h3>NEXT VIDEOS</h3>
-      <VideoCard />
+      {props.videoList.map(video => <VideoCard key={video.id} video={video}/>)}
     </div>
   );
 };
