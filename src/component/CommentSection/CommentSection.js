@@ -1,7 +1,12 @@
-import "./Footer.scss";
+import "./CommentSection.scss";
+import CommentForm from "../CommentForm/CommentForm";
 
-const Footer = () => {
-  return <footer></footer>;
+const CommentSection = () => {
+  return (
+    <>
+      <CommentForm />
+    </>
+  );
 };
 
-export default Footer;
+export default CommentSection;

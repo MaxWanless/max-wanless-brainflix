@@ -75,6 +75,9 @@
       center;
     background-color: $primary-color-blue;
     border: none;
+    &:hover {
+      background-color: $secondary-color-dark-blue;
+    }
     @include tablet {
       height: 2.5rem;
       width: 150px;
