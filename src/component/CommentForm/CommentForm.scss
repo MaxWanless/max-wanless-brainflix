@@ -15,9 +15,7 @@
     justify-content: space-evenly;
     padding: 1rem 0;
     width: 100%;
-    @include desktop {
-      width: 35rem;
-    }
+    border-bottom: 1px solid $secondary-color-mercury;
   }
   &__sub-title {
     color: $primary-color-silver;

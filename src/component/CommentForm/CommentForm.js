@@ -9,7 +9,7 @@ const CommentForm = () => {
         </div>
         <form class="form">
           <label for="#comment-field" class="form__sub-title">
-            Comment
+            JOIN THE CONVERSATION
           </label>
           <textarea
             id="comment-field"
