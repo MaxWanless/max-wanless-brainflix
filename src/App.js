@@ -10,16 +10,24 @@ import videoDetails from "./data/video-details.json";
 import videos from "./data/videos.json";
 
 function App() {
+  const [currentVideo, setCurrentVideo] = useState(0);
 
-  const [currentVideo, setCurrentVideo] = useState(0)
+  const videoSelector = (event, index) => {
+    event.preventDefault();
+    setCurrentVideo(index);
+  };
 
   return (
     <>
       <Header />
-      <VideoPlayer />
-      <VideoDescription />
-      <CommentSection />
-      <VideoList videoList={videos} />
+      <VideoPlayer videoList={videos} currentVideo={currentVideo} />
+      <VideoDescription videoDetails={videoDetails} currentVideo={currentVideo} />
+      <CommentSection videoDetails={videoDetails} currentVideo={currentVideo} />
+      <VideoList
+        videoList={videos}
+        currentVideo={currentVideo}
+        videoSelector={videoSelector}
+      />
       <Footer />
     </>
   );

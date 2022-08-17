@@ -2,7 +2,10 @@ import "./VideoCard.scss";
 
 const VideoCard = (props) => {
   return (
-    <div className="video-card">
+    <div
+      onClick={(event) => props.videoSelector(event, props.index)}
+      className="video-card"
+    >
       <div className="video-card__container">
         <img className="video-card__container-img" src={props.video.image} />
       </div>

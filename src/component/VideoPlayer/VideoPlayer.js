@@ -1,13 +1,9 @@
 import "./VideoPlayer.scss";
 
-const VideoPlayer = () => {
+const VideoPlayer = (props) => {
   return (
     <div className="player__container">
-      <video
-        className="player"
-        controls
-        poster="https://i.imgur.com/l2Xfgpl.jpg"
-      ></video>
+      <video className="player" controls poster={props.videoList.image}></video>
     </div>
   );
 };

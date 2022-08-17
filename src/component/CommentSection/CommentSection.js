@@ -1,16 +1,16 @@
 import "./CommentSection.scss";
 import CommentForm from "../CommentForm/CommentForm";
-import Comment from "../Comment/Comment"
+import Comment from "../Comment/Comment";
 
-const CommentSection = () => {
+const CommentSection = (props) => {
   return (
     <div className="comment-section">
-      <h4>3 Comments</h4>
+      <h4>{props.videoDetails[props.currentVideo].comments.length + " Comments"}</h4>
       <CommentForm />
-      <Comment />
-      <Comment />
-      <Comment/>
-    </div >
+      {props.videoDetails[props.currentVideo].comments.map((comment, index) => (
+        <Comment key={index} video={comment} />
+      ))}
+    </div>
   );
 };
 
