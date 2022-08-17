@@ -1,9 +1,51 @@
-*, *::before, *::after{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+@use "./styles/_partials/colors" as *;
+@use "./styles/_partials/fonts" as *;
+@use "./styles/_partials/mixins" as *;
+@use "./styles/_partials/variables" as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-body{
-    font-family: 'Avenir';
+body {
+  font-family: "Avenir";
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.lower {
+  display: flex;
+  flex-direction: column;
+  @include desktop {
+    flex-direction: row;
+    justify-content: center;
+    width: 80%;
+  }
+  &__container{
+    display: flex;
+    justify-content: center;
+  }
+  &__video-data {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    @include desktop {
+      width: 50%;
+      border-right: 1px solid $secondary-color-mercury;
+    }
+  }
+  &__video-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    @include desktop {
+      width: 50%;
+      height: 100%;
+    }
+  }
 }

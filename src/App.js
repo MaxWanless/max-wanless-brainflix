@@ -11,7 +11,6 @@ import videos from "./data/videos.json";
 
 function App() {
   const [currentVideo, setCurrentVideo] = useState(0);
-
   const videoSelector = (event, index) => {
     event.preventDefault();
     setCurrentVideo(index);
@@ -21,13 +20,27 @@ function App() {
     <>
       <Header />
       <VideoPlayer videoList={videos} currentVideo={currentVideo} />
-      <VideoDescription videoDetails={videoDetails} currentVideo={currentVideo} />
-      <CommentSection videoDetails={videoDetails} currentVideo={currentVideo} />
-      <VideoList
-        videoList={videos}
-        currentVideo={currentVideo}
-        videoSelector={videoSelector}
-      />
+      <div className="lower__container">
+        <div className="lower">
+          <div className="lower__video-data">
+            <VideoDescription
+              videoDetails={videoDetails}
+              currentVideo={currentVideo}
+            />
+            <CommentSection
+              videoDetails={videoDetails}
+              currentVideo={currentVideo}
+            />
+          </div>
+          <div className="lower__video-list">
+            <VideoList
+              videoList={videos}
+              currentVideo={currentVideo}
+              videoSelector={videoSelector}
+            />
+          </div>
+        </div>
+      </div>
       <Footer />
     </>
   );

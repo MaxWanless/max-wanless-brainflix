@@ -11,7 +11,7 @@ const VideoList = (props) => {
           video={video}
           currentVideo={props.currentVideo}
           videoSelector={props.videoSelector}
-          index ={index}
+          index={index}
         />
       ))}
     </div>
