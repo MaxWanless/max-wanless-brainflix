@@ -13,6 +13,13 @@
   @include tablet {
     flex-direction: row;
     justify-content: space-between;
+    padding-left: 2.25rem;
+    padding-right: 2.25rem;
+  }
+  @include desktop {
+    max-width: 1080px;
+    justify-content: flex-end;
+    margin: 0 auto;
   }
   &__container {
     display: flex;
@@ -20,22 +27,18 @@
     align-items: center;
     width: 100%;
     @include tablet {
-      width: 33%;
-      justify-content: flex-end;
-    }
-    @include tablet {
-      width: 33%;
-      justify-self: flex-end;
-      justify-content: flex-end;
+      width: auto;
     }
   }
   &__logo {
     height: 2rem;
+    &-container {
+      @include desktop {
+        width: 100%;
+      }
+    }
   }
   &__img {
-    display: none;
-    display: inline-block;
-    min-width: 2.25rem;
     width: 2.25rem;
     height: 2.25rem;
     margin-left: 1rem;
@@ -43,6 +46,10 @@
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 50%;
+    @include tablet {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
     &--1 {
       display: inline-block;
       @include tablet {
@@ -54,6 +61,9 @@
       @include tablet {
         display: inline-block;
       }
+      @include desktop {
+        margin-left: 1.5rem;
+      }
     }
   }
   &__button {
@@ -61,30 +71,42 @@
     height: 40px;
     border-radius: 4px;
     color: $primary-color-white;
+    background: transparent url("../../assets/Icons/upload.svg") no-repeat 1rem
+      center;
     background-color: $primary-color-blue;
     border: none;
     @include tablet {
+      height: 2.5rem;
       width: 150px;
+    }
+    @include desktop {
+      margin-left: 1.5rem;
     }
   }
   &-form {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 90%;
     min-width: 240px;
     margin: 1rem 0;
     @include tablet {
       width: 150px;
+      margin: 0;
     }
     &__search {
       width: 100%;
       height: 2.25rem;
-      padding: 0 0.75rem;
+      padding: 0 0 0 2.75rem;
+      background: transparent url("../../assets/Icons/search.svg") no-repeat
+        1rem center;
       background-color: $secondary-color-alabaster;
       border-radius: 4px;
       border: 2px solid $secondary-color-mercury;
       &:focus {
         outline: 2px solid $primary-color-blue;
+      }
+      @include tablet {
+        height: 2.5rem;
       }
     }
   }

@@ -1,14 +1,14 @@
 import "./Header.scss";
 import logo from "../../assets/Logo/BrainFlix-logo.svg";
-import searchIcon from "../../assets/Icons/search.svg";
-import uploadIcon from "../../assets/Icons/upload.svg";
 
 const Header = () => {
   return (
     <header className="header">
-      <a className="header__link" href="#">
-        <img className="header__logo" src={logo} />
-      </a>
+      <div className="header__logo-container">
+        <a className="header__link" href="#">
+          <img className="header__logo" src={logo} />
+        </a>
+      </div>
       <div className="header__container">
         <form className="header-form">
           <input

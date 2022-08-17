@@ -19,11 +19,19 @@ const VideoData = (props) => {
         </div>
         <div className="video-data-info">
           <div className="video-data-info__container">
-            <img className="" src={viewsIcon} alt="views icon" />
+            <img
+              className="video-data-info__icon"
+              src={viewsIcon}
+              alt="views icon"
+            />
             <p className="video-data-info__text">1,001,023</p>
           </div>
           <div className="video-data-info__container">
-            <img className="" src={likesIcon} alt="likes icon" />
+            <img
+              className="video-data-info__icon"
+              src={likesIcon}
+              alt="likes icon"
+            />
             <p className="video-data-info__text">110,985</p>
           </div>
         </div>
