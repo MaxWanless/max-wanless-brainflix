@@ -1,40 +1,40 @@
 import "./App.scss";
 import { useState } from "react";
 import Header from "./component/Header/Header";
-import VideoDescription from "./component/VideoDescription/VideoDescription";
 import VideoPlayer from "./component/VideoPlayer/VideoPlayer";
+import VideoDescription from "./component/VideoDescription/VideoDescription";
 import CommentSection from "./component/CommentSection/CommentSection";
 import VideoList from "./component/VideoList/VideoList";
-import videoDetails from "./data/video-details.json";
-import videos from "./data/videos.json";
+import videoDetailsData from "./data/video-details.json";
 
 function App() {
-  const [currentVideo, setCurrentVideo] = useState(0);
-  const videoSelector = (event, index) => {
+  const [videoDetails, setvideoDetails] = useState(videoDetailsData);
+  const [currentVideoId, setCurrentVideo] = useState(videoDetailsData[0].id);
+  const videoSelector = (event, id) => {
     event.preventDefault();
-    setCurrentVideo(index);
+    let currentVideo = videoDetailsData.find((video) => video.id === id);
+    setCurrentVideo(currentVideo.id);
   };
-
+  console.log(currentVideoId)
   return (
     <>
       <Header />
-      <VideoPlayer videoList={videoDetails} currentVideo={currentVideo} />
+      <VideoPlayer videoList={videoDetails} currentVideoId={currentVideoId} />
       <div className="lower__container">
         <div className="lower">
           <div className="lower__video-data">
             <VideoDescription
               videoDetails={videoDetails}
-              currentVideo={currentVideo}
+              currentVideoId={currentVideoId}
             />
             <CommentSection
               videoDetails={videoDetails}
-              currentVideo={currentVideo}
+              currentVideoId={currentVideoId}
             />
           </div>
           <div className="lower__video-list">
             <VideoList
-              videoList={videos}
-              currentVideo={currentVideo}
+              currentVideoId={currentVideoId}
               videoSelector={videoSelector}
             />
           </div>

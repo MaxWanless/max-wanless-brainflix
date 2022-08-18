@@ -1,13 +1,12 @@
 import "./VideoCard.scss";
 
 const VideoCard = (props) => {
-  console.log(props)
-  let {currentVideo, index, video, videoSelector} = props
+  let {currentVideoId, video, videoSelector} = props
   return (
     <div
-      onClick={(event) => videoSelector(event, index)}
+      onClick={(event) => videoSelector(event, video.id)}
       className={`video-card ${
-        index === currentVideo ? "video-card--active" : ""
+        video.id === currentVideoId ? "video-card--active" : ""
       }`}
     >
       <div className="video-card__container">

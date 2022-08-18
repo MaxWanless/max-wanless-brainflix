@@ -3,7 +3,7 @@ import viewsIcon from "../../assets/Icons/views.svg";
 import likesIcon from "../../assets/Icons/likes.svg";
 
 const VideoData = (props) => {
-  let { currentVideo, videoDetails } = props;
+  let { currentVideo } = props;
   const formatDate = (timeStamp) => {
     let postDate = new Date();
     let day = String(postDate.getDate()).padStart(2, "0");
@@ -14,17 +14,17 @@ const VideoData = (props) => {
   };
   return (
     <div className="video-data">
-      <h1 className="video-data__title">{videoDetails[currentVideo].title}</h1>
+      <h1 className="video-data__title">{currentVideo.title}</h1>
       <div className="video-data__container">
         <div className="video-data-info">
           <div className="video-data-info__container">
             <p className="video-data-info__text video-data-info__text--bold">
-              {`By ${videoDetails[currentVideo].channel}`}
+              {`By ${currentVideo.channel}`}
             </p>
           </div>
           <div className="video-data-info__container">
             <p className="video-data-info__text">
-              {formatDate(videoDetails[currentVideo].timestamp)}
+              {formatDate(currentVideo.timestamp)}
             </p>
           </div>
         </div>
@@ -36,7 +36,7 @@ const VideoData = (props) => {
               alt="views icon"
             />
             <p className="video-data-info__text">
-              {videoDetails[props.currentVideo].views}
+              {currentVideo.views}
             </p>
           </div>
           <div className="video-data-info__container">
@@ -46,7 +46,7 @@ const VideoData = (props) => {
               alt="likes icon"
             />
             <p className="video-data-info__text">
-              {videoDetails[props.currentVideo].likes}
+              {currentVideo.likes}
             </p>
           </div>
         </div>

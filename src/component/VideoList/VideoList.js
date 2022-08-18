@@ -1,18 +1,20 @@
 import "./VideoList.scss";
+import { useState } from "react";
 import VideoCard from "../VideoCard/VideoCard";
+import videosData from "../../data/videos.json";
 
 const VideoList = (props) => {
-  let { currentVideo, videoList, videoSelector } = props;
+  const [videos, setVideos] = useState(videosData);
+  let { currentVideoId, videoSelector } = props;
   return (
     <div className="video-list">
       <h3 className="video-list__title">NEXT VIDEOS</h3>
-      {videoList.map((video, index) => (
+      {videos?.map((video, index) => (
         <VideoCard
           key={video.id}
           video={video}
-          currentVideo={currentVideo}
+          currentVideoId={currentVideoId}
           videoSelector={videoSelector}
-          index={index}
         />
       ))}
     </div>
