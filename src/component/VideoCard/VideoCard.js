@@ -1,22 +1,24 @@
 import "./VideoCard.scss";
 
 const VideoCard = (props) => {
+  console.log(props)
+  let {currentVideo, index, video, videoSelector} = props
   return (
     <div
-      onClick={(event) => props.videoSelector(event, props.index)}
+      onClick={(event) => videoSelector(event, index)}
       className={`video-card ${
-        props.index === props.currentVideo ? "video-card--active" : ""
+        index === currentVideo ? "video-card--active" : ""
       }`}
     >
       <div className="video-card__container">
-        <img className="video-card__container-img" src={props.video.image} alt="Video thumbnail"/>
+        <img className="video-card__container-img" src={video.image} alt="Video thumbnail"/>
       </div>
       <div className="video-card__content-container">
         <p className="video-card__content-container-title">
-          {props.video.title}
+          {video.title}
         </p>
         <p className="video-card__content-container-channel">
-          {props.video.channel}
+          {video.channel}
         </p>
       </div>
     </div>

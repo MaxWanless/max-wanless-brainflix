@@ -1,12 +1,13 @@
 import "./VideoPlayer.scss";
 
 const VideoPlayer = (props) => {
+  let { currentVideo, videoList } = props;
   return (
     <div className="player__container">
       <video
         className="player"
         controls
-        poster={props.videoList[props.currentVideo].image}
+        poster={videoList[currentVideo].image}
       ></video>
     </div>
   );

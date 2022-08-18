@@ -4,12 +4,12 @@ import Comment from "../Comment/Comment";
 import { v4 as uuidv4} from 'uuid'
 
 const CommentSection = (props) => {
-  console.log(props)
+  let {currentVideo, videoDetails} = props
   return (
     <div className="comment-section">
-      <h4>{props.videoDetails[props.currentVideo].comments.length + " Comments"}</h4>
+      <h4>{videoDetails[currentVideo].comments.length + " Comments"}</h4>
       <CommentForm />
-      {props.videoDetails[props.currentVideo].comments.map((comment, index) => (
+      {videoDetails[currentVideo].comments.map((comment, index) => (
         <Comment key={uuidv4()} video={comment} />
       ))}
     </div>

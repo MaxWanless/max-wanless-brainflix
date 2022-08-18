@@ -2,14 +2,12 @@ import "./VideoDescription.scss";
 import VideoData from "../VideoData/VideoData";
 
 const VideoDescription = (props) => {
+  let { currentVideo, videoDetails } = props;
   return (
     <div className="video-description">
-      <VideoData
-        videoDetails={props.videoDetails}
-        currentVideo={props.currentVideo}
-      />
+      <VideoData videoDetails={videoDetails} currentVideo={currentVideo} />
       <p className="video-description__text">
-        {props.videoDetails[props.currentVideo].description}
+        {videoDetails[currentVideo].description}
       </p>
     </div>
   );

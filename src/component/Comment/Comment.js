@@ -1,13 +1,14 @@
 import "./Comment.scss";
 
 const Comment = (props) => {
+  let { comment, likes, name, timestamp } = props.video;
   const formatDate = (timeStamp) => {
     let postDate = new Date();
     let day = String(postDate.getDate()).padStart(2, "0");
     let month = String(postDate.getMonth() + 1).padStart(2, "0");
     let year = postDate.getFullYear();
     postDate = day + "/" + month + "/" + year;
-    return postDate
+    return postDate;
   };
   return (
     <div className="comment">
@@ -16,11 +17,11 @@ const Comment = (props) => {
       </div>
       <div className="comment__content">
         <div className="comment__header-container">
-          <h4 className="comment__header-text--bold">{props.video.name}</h4>
-          <p className="comment__header-text--time">{formatDate(props.video.timestamp)}</p>
+          <h4 className="comment__header-text--bold">{name}</h4>
+          <p className="comment__header-text--time">{formatDate(timestamp)}</p>
         </div>
         <div className="comment__text-container">
-          <p className="comment__content-text">{props.video.comment}</p>
+          <p className="comment__content-text">{comment}</p>
         </div>
       </div>
     </div>
