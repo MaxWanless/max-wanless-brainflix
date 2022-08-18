@@ -11,6 +11,10 @@
     width: auto;
     height: 25rem;
   }
+  @include desktop {
+    width: auto;
+    height: 31rem;
+  }
   &__container {
     display: flex;
     justify-content: center;

@@ -11,13 +11,13 @@
   width: 100%;
   padding: 1rem;
   @include tablet {
+    max-width: 1080px;
     flex-direction: row;
     justify-content: space-between;
     padding-left: 2.25rem;
     padding-right: 2.25rem;
   }
   @include desktop {
-    max-width: 1080px;
     justify-content: flex-end;
     margin: 0 auto;
   }

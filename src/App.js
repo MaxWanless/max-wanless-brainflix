@@ -19,7 +19,7 @@ function App() {
   return (
     <>
       <Header />
-      <VideoPlayer videoList={videos} currentVideo={currentVideo} />
+      <VideoPlayer videoList={videoDetails} currentVideo={currentVideo} />
       <div className="lower__container">
         <div className="lower">
           <div className="lower__video-data">

@@ -4,7 +4,7 @@ import VideoCard from "../VideoCard/VideoCard";
 const VideoList = (props) => {
   return (
     <div className="video-list">
-      <h3>NEXT VIDEOS</h3>
+      <h3 className="video-list__title">NEXT VIDEOS</h3>
       {props.videoList.map((video, index) => (
         <VideoCard
           key={video.id}

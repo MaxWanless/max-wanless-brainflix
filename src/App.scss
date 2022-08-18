@@ -24,7 +24,7 @@ body {
   @include desktop {
     flex-direction: row;
     justify-content: center;
-    width: 80%;
+    width: 85%;
   }
   &__container{
     display: flex;
@@ -35,7 +35,7 @@ body {
     flex-direction: column;
     width: 100%;
     @include desktop {
-      width: 50%;
+      width: 65%;
       border-right: 1px solid $secondary-color-mercury;
     }
   }
@@ -44,7 +44,7 @@ body {
     flex-direction: column;
     width: 100%;
     @include desktop {
-      width: 50%;
+      width: 35%;
       height: 100%;
     }
   }

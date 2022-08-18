@@ -18,7 +18,7 @@ const VideoData = (props) => {
         <div className="video-data-info">
           <div className="video-data-info__container">
             <p className="video-data-info__text video-data-info__text--bold">
-              {props.videoDetails[props.currentVideo].channel}
+              {`By ${props.videoDetails[props.currentVideo].channel}`}
             </p>
           </div>
           <div className="video-data-info__container">
