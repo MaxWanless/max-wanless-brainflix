@@ -23,6 +23,9 @@
       border-top: none;
       justify-content: space-between;
     }
+    @include desktop {
+      padding-right: 2.25rem;
+    }
   }
   &-info {
     width: 50%;

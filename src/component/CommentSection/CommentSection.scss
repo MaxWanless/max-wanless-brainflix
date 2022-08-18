@@ -5,6 +5,7 @@
 
 .comment-section {
   padding: 1rem;
+  border-collapse: collapse;
   @include tablet {
     padding: 1rem 2rem;
   }

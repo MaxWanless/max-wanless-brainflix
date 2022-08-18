@@ -1,7 +1,6 @@
 import "./VideoPlayer.scss";
 
 const VideoPlayer = (props) => {
-  console.log(props);
   return (
     <div className="player__container">
       <video

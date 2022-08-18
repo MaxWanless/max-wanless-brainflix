@@ -6,9 +6,14 @@
 .comment {
   display: flex;
   justify-content: space-evenly;
-  padding: 1rem 0 1rem 0;
+  padding: 1rem 0;
   border-collapse: collapse;
   border-bottom: 1px solid $secondary-color-mercury;
+  border-top: 1px solid $secondary-color-mercury;
+  @include desktop {
+    padding: 2rem 0;
+    border-bottom: none;
+  }
   &__img {
     height: 2.25rem;
     width: 2.25rem;
@@ -43,7 +48,6 @@
     }
   }
   &-feed {
-    border-top: 1px solid $secondary-color-mercury;
     margin-bottom: 1rem;
     @include tablet {
       margin-bottom: 2rem;
