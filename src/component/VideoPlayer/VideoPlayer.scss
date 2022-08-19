@@ -6,18 +6,20 @@
 
 .player {
   width: 100%;
-
+  height: 100%;
+  top: 0;
   @include tablet {
     width: auto;
     height: 25rem;
   }
   @include desktop {
+    height: 30rem;
     width: auto;
-    height: 31rem;
   }
   &__container {
     display: flex;
     justify-content: center;
+    width: 100%;
     background-color: $secondary-color-dark-black;
   }
 }

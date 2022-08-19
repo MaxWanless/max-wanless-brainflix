@@ -15,7 +15,6 @@ function App() {
     let currentVideo = videoDetailsData.find((video) => video.id === id);
     setCurrentVideo(currentVideo.id);
   };
-  console.log(currentVideoId)
   return (
     <>
       <Header />

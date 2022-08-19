@@ -30,6 +30,11 @@
       width: auto;
     }
   }
+  &__link {
+    text-decoration: none;
+    display: flex;
+    height: 100%;
+  }
   &__logo {
     height: 2rem;
     &-container {

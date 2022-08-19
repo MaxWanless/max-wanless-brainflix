@@ -35,9 +35,7 @@ const VideoData = (props) => {
               src={viewsIcon}
               alt="views icon"
             />
-            <p className="video-data-info__text">
-              {currentVideo.views}
-            </p>
+            <p className="video-data-info__text">{currentVideo.views}</p>
           </div>
           <div className="video-data-info__container">
             <img
@@ -45,9 +43,7 @@ const VideoData = (props) => {
               src={likesIcon}
               alt="likes icon"
             />
-            <p className="video-data-info__text">
-              {currentVideo.likes}
-            </p>
+            <p className="video-data-info__text">{currentVideo.likes}</p>
           </div>
         </div>
       </div>
