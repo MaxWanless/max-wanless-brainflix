@@ -9,7 +9,8 @@ const VideoPlayer = (props) => {
         className="player"
         controls
         poster={video.image}
-      ></video>
+      >
+      </video>
     </div>
   );
 };
