@@ -4,8 +4,9 @@ import { useState } from "react";
 
 function UploadVideo() {
   return (
-    <>
-    </>
+    <div>
+        Upload Page
+    </div>
   );
 }
 

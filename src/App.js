@@ -6,17 +6,15 @@ import MainVideo from "./pages/MainVideo/MainVideo";
 import UploadVideo from "./pages/UploadVideo/UploadVideo";
 
 function App() {
-  // const [currentVideoId, setCurrentVideo] = useState(videoDetailsData[0].id);
-
   return (
     <>
       <BrowserRouter>
         <Header />
-        {/* <Routes>
+        <Routes>
           <Route path="/" element={<MainVideo />} />
           <Route path="/:videoId" element={<MainVideo />} />
           <Route path="Upload" element={<UploadVideo />} />
-        </Routes> */}
+        </Routes>
       </BrowserRouter>
     </>
   );
