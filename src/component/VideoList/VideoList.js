@@ -5,7 +5,7 @@ import VideoCard from "../VideoCard/VideoCard";
 import videos from "../../data/videos.json";
 
 const VideoList = (props) => {
-  let { currentVideoId } = props;
+  let { currentVideoId  } = props;
   return (
     <div className="video-list">
       <h3 className="video-list__title">NEXT VIDEOS</h3>

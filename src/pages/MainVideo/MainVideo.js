@@ -9,10 +9,12 @@ import videoDetails from "../../data/video-details.json";
 
 function MainVideo() {
   const [currentVideoId, setCurrentVideo] = useState(videoDetails[0].id);
-
   return (
     <>
-      <VideoPlayer currentVideoId={currentVideoId} videoDetails={videoDetails} />
+      <VideoPlayer
+        currentVideoId={currentVideoId}
+        videoDetails={videoDetails}
+      />
       <div className="lower__container">
         <div className="lower">
           <div className="lower__video-data">

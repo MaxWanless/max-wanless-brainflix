@@ -22,7 +22,7 @@ const Header = () => {
         <div className="header__img header__img--1"></div>
       </div>
       <div className="header__container">
-        <Link to="Upload">
+        <Link className="header__button--link" to="Upload">
           <button className="header__button">UPLOAD</button>
         </Link>
         <div className="header__img header__img--2"></div>
