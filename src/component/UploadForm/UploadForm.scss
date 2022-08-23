@@ -7,9 +7,13 @@
 .upload__container {
   display: flex;
   flex-direction: column;
+  width: 100%;
   @include desktop {
     flex-direction: row;
     justify-content: space-between;
+    margin: auto;
+    padding-bottom: 2rem;
+    max-width: 1280px;
   }
 }
 
@@ -78,7 +82,7 @@
   height: 40px;
   border-radius: 4px;
   color: $primary-color-white;
-  background: transparent url("../../assets/Icons/upload.svg") no-repeat 1rem
+  background: transparent url("../../assets/Icons/publish.svg") no-repeat 1rem
     center;
   background-color: $primary-color-blue;
   border: none;
@@ -92,6 +96,7 @@
   &__container {
     display: flex;
     flex-direction: column;
+
     @include tablet {
       width: 100%;
       padding-top: 1rem;
@@ -99,6 +104,8 @@
       align-self: flex-end;
       flex-direction: row-reverse;
       align-items: center;
+      margin: auto;
+      max-width: 1280px;
     }
   }
   &__cancel {

@@ -1,35 +1,52 @@
 import "./MainVideo.scss";
-// import { useState } from "react";
-// import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import axios from "axios";
 import VideoPlayer from "../../component/VideoPlayer/VideoPlayer";
 import VideoDescription from "../../component/VideoDescription/VideoDescription";
 import CommentSection from "../../component/CommentSection/CommentSection";
 import VideoList from "../../component/VideoList/VideoList";
-import videoDetails from "../../data/video-details.json";
 
-function MainVideo() {
-  // const [currentVideoId, setCurrentVideo] = useState(videoDetails[0].id);
-  let currentVideoId = videoDetails[0].id;
+function MainVideo({ videos }) {
+  const api_key = "c030675b-01c7-48a7-a76f-df45fa997cfc";
+  const [currentVideo, setCurrentVideo] = useState(null);
+  const [isLoading, setLoading] = useState(true);
+
+  let currentVideoId = videos[0].id;
+
+
+  useEffect(() => {
+    axios
+      .get(
+        `https://project-2-api.herokuapp.com/videos/${currentVideoId}?api_key=${api_key}`
+      )
+      .then((response) => {
+        setCurrentVideo(response.data);
+        setLoading(false);
+      });
+  }, []);
+
+  if (isLoading) {
+    return <div className="App">Loading...</div>;
+  }
+
   return (
     <>
       <VideoPlayer
-        currentVideoId={currentVideoId}
-        videoDetails={videoDetails}
+        currentVideo={currentVideo}
       />
       <div className="lower__container">
         <div className="lower">
           <div className="lower__video-data">
             <VideoDescription
-              currentVideoId={currentVideoId}
-              videoDetails={videoDetails}
+              currentVideo={currentVideo}
             />
             <CommentSection
-              currentVideoId={currentVideoId}
-              videoDetails={videoDetails}
+              currentVideo={currentVideo}
             />
           </div>
           <div className="lower__video-list">
-            <VideoList currentVideoId={currentVideoId} />
+            <VideoList videos={videos} />
           </div>
         </div>
       </div>
