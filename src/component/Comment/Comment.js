@@ -1,14 +1,55 @@
 import "./Comment.scss";
 
 const Comment = (props) => {
-  let { comment, likes, name, timestamp } = props.video;
+  let { comment, name, timestamp } = props.video;
   const formatDate = (timeStamp) => {
-    let postDate = new Date();
-    let day = String(postDate.getDate()).padStart(2, "0");
-    let month = String(postDate.getMonth() + 1).padStart(2, "0");
-    let year = postDate.getFullYear();
-    postDate = day + "/" + month + "/" + year;
-    return postDate;
+    const seconds = Math.floor((new Date() - timeStamp) / 1000);
+
+    let interval = seconds / 31536000;
+    if (interval > 1) {
+      if (interval < 2) {
+        return Math.floor(interval) + " year  ago";
+      } else {
+        return Math.floor(interval) + " years  ago";
+      }
+    }
+    interval = seconds / 2592000;
+    if (interval > 1) {
+      if (interval < 2) {
+        return Math.floor(interval) + " month  ago";
+      } else {
+        return Math.floor(interval) + " months  ago";
+      }
+    }
+    interval = seconds / 86400;
+    if (interval > 1) {
+      if (interval < 2) {
+        return Math.floor(interval) + " day  ago";
+      } else {
+        return Math.floor(interval) + " days  ago";
+      }
+    }
+    interval = seconds / 3600;
+    if (interval > 1) {
+      if (interval < 2) {
+        return Math.floor(interval) + " hour  ago";
+      } else {
+        return Math.floor(interval) + " hours  ago";
+      }
+    }
+    interval = seconds / 60;
+    if (interval > 1) {
+      if (interval < 2) {
+        return Math.floor(interval) + " minute  ago";
+      } else {
+        return Math.floor(interval) + " minutes  ago";
+      }
+    }
+    interval = seconds;
+    if (interval > 30) {
+      return " 30 seconds  ago";
+    }
+    return "Just now";
   };
   return (
     <div className="comment">

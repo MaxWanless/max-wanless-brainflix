@@ -22,21 +22,4 @@
       padding-bottom: 2rem;
     }
   }
-  &__label {
-    color: $primary-color-silver;
   }
-  &__thumbnail {
-    border-radius: 4px;
-    margin-bottom: 2rem;
-    @include tablet {
-      width: 50%;
-    }
-  }
-  &__cancel {
-    font-size: 1.1rem;
-    text-decoration: none;
-    text-align: center;
-    color: $primary-color-blue;
-    margin-top: 2rem;
-  }
-}

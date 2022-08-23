@@ -4,6 +4,43 @@
 @use "../../styles/_partials/mixins" as *;
 @use "../../styles/_partials/variables" as *;
 
+.upload__container {
+  display: flex;
+  flex-direction: column;
+  @include desktop {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.thumbnail {
+  margin-bottom: 2rem;
+  @include desktop {
+    margin: 0;
+  }
+  &__label {
+    color: $primary-color-silver;
+  }
+  &__img {
+    height: 40vw;
+    background-image: url("../../assets/Images/Upload-video-preview.jpg");
+    background-size: cover;
+    background-position: center;
+    background-color: $secondary-color-mercury;
+    border-radius: 4px;
+    width: 100%;
+    @include tablet {
+      height: 20vw;
+      width: 35%;
+    }
+    @include desktop {
+      height: 11rem;
+      width: 20rem;
+      margin-right: 2rem;
+    }
+  }
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -33,19 +70,45 @@
       height: 5rem;
     }
   }
-  &__button {
-    margin: 0;
-    width: 100%;
-    height: 40px;
-    border-radius: 4px;
-    color: $primary-color-white;
-    background: transparent url("../../assets/Icons/upload.svg") no-repeat 1rem
-      center;
-    background-color: $primary-color-blue;
-    border: none;
-    cursor: pointer;
-    &:hover {
-      background-color: $secondary-color-dark-blue;
+}
+
+.button {
+  margin: 0;
+  width: 100%;
+  height: 40px;
+  border-radius: 4px;
+  color: $primary-color-white;
+  background: transparent url("../../assets/Icons/upload.svg") no-repeat 1rem
+    center;
+  background-color: $primary-color-blue;
+  border: none;
+  cursor: pointer;
+  @include tablet {
+    max-width: 150px;
+  }
+  &:hover {
+    background-color: $secondary-color-dark-blue;
+  }
+  &__container {
+    display: flex;
+    flex-direction: column;
+    @include tablet {
+      width: 100%;
+      padding-top: 1rem;
+      border-top: 1px solid $secondary-color-mercury;
+      align-self: flex-end;
+      flex-direction: row-reverse;
+      align-items: center;
+    }
+  }
+  &__cancel {
+    font-size: 1.1rem;
+    text-decoration: none;
+    text-align: center;
+    color: $primary-color-blue;
+    margin-top: 2rem;
+    @include tablet {
+      margin: 0 4rem;
     }
   }
 }

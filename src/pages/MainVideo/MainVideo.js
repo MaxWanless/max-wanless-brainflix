@@ -1,6 +1,6 @@
 import "./MainVideo.scss";
-import { useState } from "react";
-import { useParams } from "react-router-dom";
+// import { useState } from "react";
+// import { useParams } from "react-router-dom";
 import VideoPlayer from "../../component/VideoPlayer/VideoPlayer";
 import VideoDescription from "../../component/VideoDescription/VideoDescription";
 import CommentSection from "../../component/CommentSection/CommentSection";
@@ -8,7 +8,8 @@ import VideoList from "../../component/VideoList/VideoList";
 import videoDetails from "../../data/video-details.json";
 
 function MainVideo() {
-  const [currentVideoId, setCurrentVideo] = useState(videoDetails[0].id);
+  // const [currentVideoId, setCurrentVideo] = useState(videoDetails[0].id);
+  let currentVideoId = videoDetails[0].id;
   return (
     <>
       <VideoPlayer
