@@ -4,8 +4,9 @@ import likesIcon from "../../assets/Icons/likes.svg";
 
 const VideoData = (props) => {
   let { currentVideo } = props;
+  
   const formatDate = (timeStamp) => {
-    let postDate = new Date();
+    let postDate = new Date(timeStamp);
     let day = String(postDate.getDate()).padStart(2, "0");
     let month = String(postDate.getMonth() + 1).padStart(2, "0");
     let year = postDate.getFullYear();

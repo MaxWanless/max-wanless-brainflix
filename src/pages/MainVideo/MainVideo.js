@@ -11,42 +11,44 @@ function MainVideo({ videos }) {
   const api_key = "c030675b-01c7-48a7-a76f-df45fa997cfc";
   const [currentVideo, setCurrentVideo] = useState(null);
   const [isLoading, setLoading] = useState(true);
-
-  let currentVideoId = videos[0].id;
-
+  const [currentVideoId, setCurrentVideoId] = useState(videos[0].id);
+  const { videoId } = useParams();
+  if (videoId && videoId !== currentVideoId) {
+    setCurrentVideoId(videoId);
+  } else if (!videoId && currentVideoId !== videos[0].id) {
+    setCurrentVideoId(videos[0].id);
+  }
 
   useEffect(() => {
     axios
       .get(
         `https://project-2-api.herokuapp.com/videos/${currentVideoId}?api_key=${api_key}`
       )
-      .then((response) => {
+      ?.then((response) => {
         setCurrentVideo(response.data);
         setLoading(false);
       });
-  }, []);
+  }, [currentVideoId]);
 
   if (isLoading) {
-    return <div className="App">Loading...</div>;
+    return (
+      <div className="page-loader">
+        <div className="page-loader__text">...Loading</div>
+      </div>
+    );
   }
 
   return (
     <>
-      <VideoPlayer
-        currentVideo={currentVideo}
-      />
+      <VideoPlayer currentVideo={currentVideo} />
       <div className="lower__container">
         <div className="lower">
           <div className="lower__video-data">
-            <VideoDescription
-              currentVideo={currentVideo}
-            />
-            <CommentSection
-              currentVideo={currentVideo}
-            />
+            <VideoDescription currentVideo={currentVideo} />
+            <CommentSection currentVideo={currentVideo} />
           </div>
           <div className="lower__video-list">
-            <VideoList videos={videos} />
+            <VideoList currentVideoId={currentVideoId} videos={videos} />
           </div>
         </div>
       </div>
