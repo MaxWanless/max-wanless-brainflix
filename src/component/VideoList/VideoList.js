@@ -8,7 +8,7 @@ const VideoList = ({ currentVideoId, videos }) => {
     <div className="video-list">
       <h3 className="video-list__title">NEXT VIDEOS</h3>
       {videos?.map((video) => (
-        <Link key={uuidv4()} to={`/${video.id}`}>
+        <Link className="video-list__link" key={uuidv4()} to={`/${video.id}`}>
           <VideoCard
             key={video.id}
             video={video}

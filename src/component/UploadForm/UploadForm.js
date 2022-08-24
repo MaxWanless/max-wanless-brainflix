@@ -1,6 +1,6 @@
 import "./UploadForm.scss";
 import { Link } from "react-router-dom";
-import videoThumbnail from "../../assets/Images/Upload-video-preview.jpg";
+
 
 function UploadForm() {
   return (

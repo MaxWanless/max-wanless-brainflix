@@ -16,8 +16,11 @@
     font-weight: 700;
     color: $primary-color-silver;
     margin-bottom: 1rem;
-    @include tablet{
+    @include tablet {
       margin-bottom: 2rem;
     }
+  }
+  &__link {
+    text-decoration: none;
   }
 }

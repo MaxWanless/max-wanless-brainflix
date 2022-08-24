@@ -18,7 +18,9 @@ function MainVideo({ videos }) {
   } else if (!videoId && currentVideoId !== videos[0].id) {
     setCurrentVideoId(videos[0].id);
   }
-
+  console.log(
+    `https://project-2-api.herokuapp.com/videos/${currentVideoId}?api_key=${api_key}`
+  );
   useEffect(() => {
     axios
       .get(
