@@ -70,8 +70,15 @@ function MainVideo({ videos }) {
 
   if (isLoading) {
     return (
-      <div className="page-loader">
-        <div className="page-loader__text">...Loading</div>
+      <div className="loading">
+        <h1 className="loading__title">Loading...</h1>
+        <div class="loading__dots-container">
+          <div class="loading__dots"></div>
+          <div class="loading__dots"></div>
+          <div class="loading__dots"></div>
+          <div class="loading__dots"></div>
+          <div class="loading__dots"></div>
+        </div>
       </div>
     );
   }

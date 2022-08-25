@@ -46,7 +46,7 @@ function UploadForm() {
   };
 
   if (formSubmitted) {
-    return <Navigate to="/" />;
+    return <Navigate to="/Success" />;
   }
 
   return (

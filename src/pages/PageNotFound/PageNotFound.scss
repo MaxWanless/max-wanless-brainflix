@@ -1,0 +1,25 @@
+@use "../../styles/_partials/global" as *;
+@use "../../styles/_partials/colors" as *;
+@use "../../styles/_partials/fonts" as *;
+@use "../../styles/_partials/mixins" as *;
+@use "../../styles/_partials/variables" as *;
+
+.upload {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 1rem;
+  border-top: 1px solid $secondary-color-mercury;
+  @include tablet {
+    padding: 2rem;
+  }
+  &__title {
+    margin-bottom: 2rem;
+    font-weight: 400;
+    @include tablet {
+      font-weight: 700;
+      border-bottom: 1px solid $secondary-color-mercury;
+      padding-bottom: 2rem;
+    }
+  }
+  }
