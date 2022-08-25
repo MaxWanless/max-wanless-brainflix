@@ -1,7 +1,7 @@
 import "./Comment.scss";
 
-const Comment = (props) => {
-  let { comment, name, timestamp, id, likes } = props.video;
+const Comment = ({video}) => {
+let { comment, name, timestamp, id, likes } = video
   const formatDate = (timeStamp) => {
     const seconds = Math.floor((new Date() - timeStamp) / 1000);
 
@@ -64,10 +64,10 @@ const Comment = (props) => {
         <div className="comment__text-container">
           <p className="comment__content-text">{comment}</p>
         </div>
-        <div class="comment__interaction-container">
-          <p class="comment__interaction-text">{`Likes: ${likes}`}</p>
-          <button class="comment__interaction-button--like">👍</button>
-          <button class="comment__interaction-button--delete">🚫</button>
+        <div className="comment__interaction-container">
+          <p className="comment__interaction-text">{`Likes: ${likes}`}</p>
+          <button className="comment__interaction-button--like">👍</button>
+          <button className="comment__interaction-button--delete">🚫</button>
         </div>
       </div>
     </div>

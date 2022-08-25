@@ -7,7 +7,7 @@ const CommentSection = ({currentVideo}) => {
   return (
     <div className="comment-section">
       <h4>{currentVideo.comments.length + " Comments"}</h4>
-      <CommentForm />
+      <CommentForm videoId={currentVideo.id}/>
       {currentVideo.comments?.map((comment, index) => (
         <Comment key={uuidv4()} video={comment} />
       ))}
