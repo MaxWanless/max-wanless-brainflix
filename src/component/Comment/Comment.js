@@ -1,7 +1,8 @@
 import "./Comment.scss";
 
-const Comment = ({video}) => {
-let { comment, name, timestamp, id, likes } = video
+const Comment = (props) => {
+  let { videoId, deleteCommentHandler } = props;
+  let { comment, name, timestamp, id, likes } = props.comment;
   const formatDate = (timeStamp) => {
     const seconds = Math.floor((new Date() - timeStamp) / 1000);
 
@@ -51,6 +52,7 @@ let { comment, name, timestamp, id, likes } = video
     }
     return "Just now";
   };
+
   return (
     <div className="comment">
       <div className="comment__img-container">
@@ -67,7 +69,12 @@ let { comment, name, timestamp, id, likes } = video
         <div className="comment__interaction-container">
           <p className="comment__interaction-text">{`Likes: ${likes}`}</p>
           <button className="comment__interaction-button--like">👍</button>
-          <button className="comment__interaction-button--delete">🚫</button>
+          <button
+            className="comment__interaction-button--delete"
+            onClick={() => deleteCommentHandler(videoId, id)}
+          >
+            🚫
+          </button>
         </div>
       </div>
     </div>
