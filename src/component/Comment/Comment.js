@@ -4,8 +4,9 @@ const Comment = (props) => {
   let { videoId, deleteCommentHandler } = props;
   let { comment, name, timestamp, id, likes } = props.comment;
   const formatDate = (timeStamp) => {
+    //Calculate time difference from now to post time in seconds
     const seconds = Math.floor((new Date() - timeStamp) / 1000);
-
+    // Years
     let interval = seconds / 31536000;
     if (interval > 1) {
       if (interval < 2) {
@@ -14,6 +15,7 @@ const Comment = (props) => {
         return Math.floor(interval) + " years  ago";
       }
     }
+    //Months
     interval = seconds / 2592000;
     if (interval > 1) {
       if (interval < 2) {
@@ -22,6 +24,7 @@ const Comment = (props) => {
         return Math.floor(interval) + " months  ago";
       }
     }
+    //days
     interval = seconds / 86400;
     if (interval > 1) {
       if (interval < 2) {
@@ -30,6 +33,7 @@ const Comment = (props) => {
         return Math.floor(interval) + " days  ago";
       }
     }
+    // Hours
     interval = seconds / 3600;
     if (interval > 1) {
       if (interval < 2) {
@@ -38,6 +42,7 @@ const Comment = (props) => {
         return Math.floor(interval) + " hours  ago";
       }
     }
+    // Minutes
     interval = seconds / 60;
     if (interval > 1) {
       if (interval < 2) {
@@ -46,10 +51,12 @@ const Comment = (props) => {
         return Math.floor(interval) + " minutes  ago";
       }
     }
+    //30 seconds ago
     interval = seconds;
     if (interval > 30) {
       return " 30 seconds  ago";
     }
+    //Catch all just now
     return "Just now";
   };
 
