@@ -35,7 +35,7 @@ function App() {
           <Route path="/:videoId" element={<MainVideo videos={videos} />} />
           <Route path="Upload" element={<UploadVideo />} />
           <Route path="Success" element={<UploadSuccess />} />
-          <Route path="*" element={<PageNotFound />} />
+          <Route path="/404" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
     </div>
