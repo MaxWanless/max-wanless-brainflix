@@ -6,11 +6,15 @@ function UploadForm() {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [titleValid, setTitleValid] = useState(true);
+  const [titleDescription, setDescriptionValid] = useState(true);
 
   const handleChangeTitle = (event) => {
+    setTitleValid(true);
     setTitle(event.target.value);
   };
   const handleChangeDescription = (event) => {
+    setDescriptionValid(true);
     setDescription(event.target.value);
   };
   const isTitleValid = () => {
@@ -36,8 +40,14 @@ function UploadForm() {
     if (isFormValid()) {
       setTitle("");
       setDescription("");
-      alert("Video Uploaded Successfully");
       navigateHome();
+    } else {
+      if (!isDescriptionValid()) {
+        setDescriptionValid(false);
+      }
+      if (!isTitleValid()) {
+        setTitleValid(false);
+      }
     }
   };
 
@@ -61,7 +71,9 @@ function UploadForm() {
             TITLE YOUR VIDEO
           </label>
           <input
-            className="form__input"
+            className={`form__input${
+              titleValid ? "" : " form__input--invalid"
+            }`}
             type="text"
             id="title"
             name="title"
@@ -73,7 +85,9 @@ function UploadForm() {
             ADD A VIDEO DESCRIPTION
           </label>
           <input
-            className="form__input form__input--description"
+            className={`form__input${
+              titleDescription ? "" : " form__input--invalid"
+            }`}
             type="text"
             id="description"
             name="description"

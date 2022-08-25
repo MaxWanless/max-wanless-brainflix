@@ -73,6 +73,12 @@
     &--description {
       height: 5rem;
     }
+    &--invalid {
+      border: 1px solid #d22d2d;
+    }
+    &:focus {
+      outline: 2px solid $primary-color-blue;
+    }
   }
 }
 
