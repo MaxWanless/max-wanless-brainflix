@@ -56,45 +56,49 @@ function UploadForm() {
   };
 
   if (formSubmitted) {
-    return <Navigate to="/Success" />;
+    return <Navigate to="/Upload/Success" />;
   }
 
   return (
     <>
       <div className="upload__container">
         <form className="form" onSubmit={handleSubmit}>
-          <div className="thumbnail">
-            <p className="thumbnail__label">VIDEO THUMBNAIL</p>
-            <div className="thumbnail__img"></div>
+          <div className="test-container">
+            <div className="thumbnail">
+              <p className="thumbnail__label">VIDEO THUMBNAIL</p>
+              <div className="thumbnail__img"></div>
+            </div>
+            <div className="form__input-container">
+              <label className="form__label" htmlFor="#title">
+                TITLE YOUR VIDEO
+              </label>
+              <input
+                className={`form__input${
+                  titleValid ? "" : " form__input--invalid"
+                }`}
+                type="text"
+                id="title"
+                name="title"
+                placeholder="Add a title to your video"
+                onChange={handleChangeTitle}
+                value={title}
+              />
+              <label className="form__label" htmlFor="#description">
+                ADD A VIDEO DESCRIPTION
+              </label>
+              <input
+                className={`form__input${
+                  titleDescription ? "" : " form__input--invalid"
+                }`}
+                type="text"
+                id="description"
+                name="description"
+                placeholder="Add a description to your video"
+                onChange={handleChangeDescription}
+                value={description}
+              />
+            </div>
           </div>
-          <label className="form__label" htmlFor="#title">
-            TITLE YOUR VIDEO
-          </label>
-          <input
-            className={`form__input${
-              titleValid ? "" : " form__input--invalid"
-            }`}
-            type="text"
-            id="title"
-            name="title"
-            placeholder="Add a title to your video"
-            onChange={handleChangeTitle}
-            value={title}
-          />
-          <label className="form__label" htmlFor="#description">
-            ADD A VIDEO DESCRIPTION
-          </label>
-          <input
-            className={`form__input${
-              titleDescription ? "" : " form__input--invalid"
-            }`}
-            type="text"
-            id="description"
-            name="description"
-            placeholder="Add a description to your video"
-            onChange={handleChangeDescription}
-            value={description}
-          />
           <div className="button__container">
             <button type="submit" className="button">
               PUBLISH

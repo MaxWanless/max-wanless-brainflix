@@ -1,6 +1,6 @@
 import "./MainVideo.scss";
-import { useState, useEffect, useCallback } from "react";
-import { useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useParams, Navigate } from "react-router-dom";
 import axios from "axios";
 import VideoPlayer from "../../component/VideoPlayer/VideoPlayer";
 import VideoDescription from "../../component/VideoDescription/VideoDescription";
@@ -13,6 +13,7 @@ function MainVideo({ videos }) {
   const [submitComment, setSubmitComment] = useState(true);
   const [currentVideo, setCurrentVideo] = useState(null);
   const [isLoading, setLoading] = useState(true);
+  const [axiosFailed, setAxiosFailed] = useState(false);
   const [currentVideoId, setCurrentVideoId] = useState(videos[0].id);
   const { videoId } = useParams();
   if (videoId && videoId !== currentVideoId) {
@@ -20,6 +21,7 @@ function MainVideo({ videos }) {
   } else if (!videoId && currentVideoId !== videos[0].id) {
     setCurrentVideoId(videos[0].id);
   }
+
   useEffect(() => {
     axios
       .get(
@@ -28,6 +30,12 @@ function MainVideo({ videos }) {
       ?.then((response) => {
         setCurrentVideo(response.data);
         setLoading(false);
+      })
+      .catch((error) => {
+        setTimeout(() => {
+          console.log("setTimeout");
+          setAxiosFailed(true);
+        }, 2000);
       });
   }, [currentVideoId, deleteComment, submitComment]);
 
@@ -68,19 +76,22 @@ function MainVideo({ videos }) {
     }
   };
 
-  if (isLoading) {
+  if (isLoading && !axiosFailed) {
     return (
       <div className="loading">
         <h1 className="loading__title">Loading</h1>
-        <div class="loading__dots-container">
-          <div class="loading__dots"></div>
-          <div class="loading__dots"></div>
-          <div class="loading__dots"></div>
-          <div class="loading__dots"></div>
-          <div class="loading__dots"></div>
+        <div className="loading__dots-container">
+          <div className="loading__dots"></div>
+          <div className="loading__dots"></div>
+          <div className="loading__dots"></div>
+          <div className="loading__dots"></div>
+          <div className="loading__dots"></div>
         </div>
       </div>
     );
+  }
+  if (isLoading && axiosFailed) {
+    return <Navigate to="/Video-not-found" />;
   }
 
   return (
