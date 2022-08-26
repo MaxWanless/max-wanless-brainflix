@@ -3,14 +3,17 @@ import { Navigate } from "react-router-dom";
 import "./UploadSuccess.scss";
 
 function UploadSuccess() {
+  // Create state to trigger upload complete
   const [uploadComplete, setUploadComplete] = useState(false);
 
   useEffect(() => {
+    // simulate video upload,  set uploadComplete state after 2 seconds
     setTimeout(() => {
       setUploadComplete(true);
     }, 2000);
   }, []);
 
+  // Redirect to home page when upload complete
   if (uploadComplete) {
     return <Navigate to="/" />;
   }

@@ -7,21 +7,30 @@ import VideoDescription from "../../component/VideoDescription/VideoDescription"
 import CommentSection from "../../component/CommentSection/CommentSection";
 import VideoList from "../../component/VideoList/VideoList";
 
-function MainVideo({ videos }) {
-  const api_key = "c030675b-01c7-48a7-a76f-df45fa997cfc";
+function MainVideo({ videos, api_key }) {
+  // Create state to recall API on comment delete
   const [deleteComment, setDeleteComment] = useState(true);
+  // Create state to recall API on comment submit
   const [submitComment, setSubmitComment] = useState(true);
+  // Create state hold current video data
   const [currentVideo, setCurrentVideo] = useState(null);
+  // Create state to control page loading while waiting for API
   const [isLoading, setLoading] = useState(true);
+  // Create state to redirect to 404 page if API call fails
   const [axiosFailed, setAxiosFailed] = useState(false);
+  // Create state to hold current video Id
   const [currentVideoId, setCurrentVideoId] = useState(videos[0].id);
+  // Create Variable to hold video Id from address bar
   const { videoId } = useParams();
+  // If there is a id from the URL and it doesnt match the
+  //current Id set current Id to URL id if no URL id set to default video Id
   if (videoId && videoId !== currentVideoId) {
     setCurrentVideoId(videoId);
   } else if (!videoId && currentVideoId !== videos[0].id) {
     setCurrentVideoId(videos[0].id);
   }
 
+  // On page load, comment submission or deletion call API, If API call fails Navigate to 404 page
   useEffect(() => {
     axios
       .get(
@@ -39,6 +48,7 @@ function MainVideo({ videos }) {
       });
   }, [currentVideoId, deleteComment, submitComment]);
 
+  // Function to handle the deletion of a comment
   const deleteCommentHandler = (videoId, id) => {
     axios
       .delete(
@@ -51,7 +61,7 @@ function MainVideo({ videos }) {
         console.log(error);
       });
   };
-
+  // Function to handle the submition of a new comment
   const commentSubmitHandler = (event, videoId, userName, commentText) => {
     event.preventDefault();
     const isFormValid = () => {
@@ -76,6 +86,7 @@ function MainVideo({ videos }) {
     }
   };
 
+  // If still waiting for API response show loader if not navigate to 404 page
   if (isLoading && !axiosFailed) {
     return (
       <div className="loading">

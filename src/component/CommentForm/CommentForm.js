@@ -2,8 +2,11 @@ import { useState } from "react";
 import "./CommentForm.scss";
 
 const CommentForm = ({ videoId, commentSubmitHandler }) => {
+  // Create state to update comment text input on change
   const [commentText, setCommentText] = useState("");
+  // User Name for "Logged" in user
   const userName = "Mohan Muruge";
+  // Function to update comment text input on change
   const commentChangeHandler = (event) => {
     setCommentText(event.target.value);
   };

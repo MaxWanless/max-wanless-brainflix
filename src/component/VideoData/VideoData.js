@@ -2,9 +2,8 @@ import "./VideoData.scss";
 import viewsIcon from "../../assets/Icons/views.svg";
 import likesIcon from "../../assets/Icons/likes.svg";
 
-const VideoData = (props) => {
-  let { currentVideo } = props;
-  
+const VideoData = ({ currentVideo }) => {
+  // Function to format timestamp to readable date
   const formatDate = (timeStamp) => {
     let postDate = new Date(timeStamp);
     let day = String(postDate.getDate()).padStart(2, "0");

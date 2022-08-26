@@ -1,7 +1,6 @@
 import "./UploadVideo.scss";
 import UploadForm from "../../component/UploadForm/UploadForm";
 
-
 function UploadVideo() {
   return (
     <div className="upload">

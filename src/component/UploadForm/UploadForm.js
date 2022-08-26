@@ -3,44 +3,55 @@ import { Link, Navigate } from "react-router-dom";
 import "./UploadForm.scss";
 
 function UploadForm() {
+  // Create state to update title input text on change
   const [title, setTitle] = useState("");
+  // Create state to update description input text on change
   const [description, setDescription] = useState("");
+  // Create state to trigger page redirect on succesfull Upload
   const [formSubmitted, setFormSubmitted] = useState(false);
+  // Create state to update when Title input data is valid
   const [titleValid, setTitleValid] = useState(true);
+  // Create state to update when description input data is valid
   const [titleDescription, setDescriptionValid] = useState(true);
 
+  // Function to update Title text input on change
   const handleChangeTitle = (event) => {
     setTitleValid(true);
     setTitle(event.target.value);
   };
+  // Function to update Description text input on change
   const handleChangeDescription = (event) => {
     setDescriptionValid(true);
     setDescription(event.target.value);
   };
+  // Function to check if title input value is valid
   const isTitleValid = () => {
     if (title) {
       return true;
     }
     return false;
   };
+  // Function to check if description input value is valid
   const isDescriptionValid = () => {
     if (description) {
       return true;
     }
     return false;
   };
+  // Function to check if form is valid
   const isFormValid = () => {
     if (isTitleValid() && isDescriptionValid()) {
       return true;
     }
     return false;
   };
+  // Function to handle the submition of the form
   const handleSubmit = (event) => {
     event.preventDefault();
     if (isFormValid()) {
       setTitle("");
       setDescription("");
-      navigateHome();
+      navigateSuccessPage();
     } else {
       if (!isDescriptionValid()) {
         setDescriptionValid(false);
@@ -50,11 +61,11 @@ function UploadForm() {
       }
     }
   };
-
-  const navigateHome = () => {
+  // Function to set formsubmitted state on successful submision
+  const navigateSuccessPage = () => {
     setFormSubmitted(true);
   };
-
+  // If the form has been successfully submitted navigate successfull upload screen
   if (formSubmitted) {
     return <Navigate to="/Upload/Success" />;
   }

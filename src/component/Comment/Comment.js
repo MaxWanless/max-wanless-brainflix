@@ -1,8 +1,9 @@
 import "./Comment.scss";
 
-const Comment = (props) => {
-  let { videoId, deleteCommentHandler } = props;
-  let { comment, name, timestamp, id, likes } = props.comment;
+const Comment = ({ comment, videoId, deleteCommentHandler }) => {
+  // Destructure comment object
+  let { comment: commentText, name, timestamp, id, likes } = comment;
+  // Function to create relative timestamp
   const formatDate = (timeStamp) => {
     //Calculate time difference from now to post time in seconds
     const seconds = Math.floor((new Date() - timeStamp) / 1000);
@@ -71,7 +72,7 @@ const Comment = (props) => {
           <p className="comment__header-text--time">{formatDate(timestamp)}</p>
         </div>
         <div className="comment__text-container">
-          <p className="comment__content-text">{comment}</p>
+          <p className="comment__content-text">{commentText}</p>
         </div>
         <div className="comment__interaction-container">
           <p className="comment__interaction-text">{`Likes: ${likes}`}</p>

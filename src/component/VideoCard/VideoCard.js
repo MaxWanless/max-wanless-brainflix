@@ -1,7 +1,6 @@
 import "./VideoCard.scss";
 
-const VideoCard = (props) => {
-  let { currentVideoId, video } = props;
+const VideoCard = ({ currentVideoId, video }) => {
   return (
     <div
       className={`video-card ${
