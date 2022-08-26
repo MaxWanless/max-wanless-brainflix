@@ -18,7 +18,8 @@ const CommentForm = ({ videoId, commentSubmitHandler }) => {
         <form
           className="comment-form"
           onSubmit={(event) => {
-            commentSubmitHandler(event, videoId, userName, commentText);
+            commentSubmitHandler(event, videoId, userName, commentText)
+            setCommentText("");
           }}
         >
           <div className="comment-form__search-container">
