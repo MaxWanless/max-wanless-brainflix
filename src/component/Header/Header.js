@@ -22,9 +22,12 @@ const Header = () => {
         <div className="header__img header__img--1"></div>
       </div>
       <div className="header__container">
-        <Link className="header__button--link" to="Upload">
-          <button className="header__button">UPLOAD</button>
-        </Link>
+        <button className="header__button">
+          <Link className="header__button--link" to="Upload">
+            UPLOAD
+          </Link>
+        </button>
+
         <div className="header__img header__img--2"></div>
       </div>
     </header>

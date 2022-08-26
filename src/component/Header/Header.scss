@@ -84,22 +84,23 @@
     &:hover {
       background-color: $secondary-color-dark-blue;
     }
+    &--link {
+      display: flex;
+      flex-direction: column;
+      align-content: center;
+      justify-content: center;
+      text-decoration: none;
+      color: inherit;
+      height: inherit;
+      width: inherit;
+    
+    }
     @include tablet {
       height: 2.5rem;
       width: 150px;
     }
     @include desktop {
       margin-left: 1.5rem;
-    }
-    &--link {
-      width: 100%;
-      @include tablet {
-        height: 2.5rem;
-        width: 150px;
-      }
-      @include desktop {
-        margin-left: 1.5rem;
-      }
     }
   }
   &-form {
