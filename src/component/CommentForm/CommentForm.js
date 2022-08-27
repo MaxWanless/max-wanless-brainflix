@@ -26,7 +26,7 @@ const CommentForm = ({ videoId, commentSubmitHandler }) => {
           }}
         >
           <div className="comment-form__search-container">
-            <label htmlFor="#comment-field" className="form__sub-title">
+            <label htmlFor="#comment-field" className="comment-form__sub-title">
               JOIN THE CONVERSATION
             </label>
             <textarea
