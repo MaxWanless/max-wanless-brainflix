@@ -8,7 +8,7 @@
   font-family: "Avenir", Times, serif;
   display: flex;
   flex-direction: column;
-  width: 80%;
+  width: 100%;
   @include tablet {
     flex-direction: row;
     align-items: center;
@@ -17,7 +17,7 @@
   &-container {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: space-between;
     padding: 1rem 0;
     width: 100%;
     border-bottom: 1px solid $secondary-color-mercury;
@@ -34,16 +34,16 @@
     color: $primary-color-silver;
   }
   &__img {
-    width: 2.25rem;
-    height: 2.25rem;
+    width: 3rem;
+    height: 3rem;
     background-image: url("../../assets/Images/Mohan-muruge.jpg");
     background-size: cover;
     background-repeat: no-repeat;
     border-radius: 50%;
-    margin-top: 1.4rem;
+    margin-top: 1rem;
+    margin-right: 1rem;
     @include tablet {
-      width: 3rem;
-      height: 3rem;
+      margin-right: 2rem;
     }
   }
   &__text-input {
@@ -53,7 +53,6 @@
     width: 100%;
     border-radius: 0.25rem;
     padding: 0.75rem;
-    margin-top: 0.25rem;
     border: 1px solid $secondary-color-mercury;
     margin-bottom: 1rem;
     overflow-y: hidden;
@@ -89,7 +88,10 @@
       padding-left: 2rem;
       padding-right: 2rem;
       width: 25%;
-      margin-left: 2rem ;
+      margin-left: 2rem;
+    }
+    @include desktop {
+      margin-right: 2rem;
     }
   }
 }
