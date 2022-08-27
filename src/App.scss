@@ -37,7 +37,7 @@ body {
     width: 100%;
     @include desktop {
       width: 65%;
-      border-right: 1px solid $secondary-color-mercury;
+      border-right: 2px solid $secondary-color-mercury;
     }
   }
   &__video-list {
@@ -45,7 +45,7 @@ body {
     flex-direction: column;
     width: 100%;
     @include desktop {
-      width: 35%;
+      width: 40%;
       height: 100%;
     }
   }

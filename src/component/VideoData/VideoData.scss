@@ -20,8 +20,8 @@
     flex-direction: row;
     justify-content: flex-start;
     margin: 1rem 0;
-    border-top: 1px solid $secondary-color-mercury;
-    border-bottom: 1px solid $secondary-color-mercury;
+    border-top: 2px solid $secondary-color-mercury;
+    border-bottom: 2px solid $secondary-color-mercury;
     @include tablet {
       border-top: none;
       margin: 0;

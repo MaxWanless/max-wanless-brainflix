@@ -16,19 +16,15 @@
     display: none;
   }
   &__container {
-    display: flex;
-    justify-content: center;
-    align-content: center;
-    overflow: hidden;
-    min-width: 9rem;
+    width: 9rem;
     height: 5rem;
+    overflow: hidden;
     background-color: $secondary-color-mercury;
     border-radius: 10px;
     &-img {
       height: inherit;
-      width: 100%;
+      width: inherit;
       object-fit: cover;
-      border-radius: inherit;
     }
   }
   &__content-container {
