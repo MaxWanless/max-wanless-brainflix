@@ -29,8 +29,8 @@ const CommentForm = ({ videoId, commentSubmitHandler }) => {
             <label htmlFor="#comment-field" className="form__sub-title">
               JOIN THE CONVERSATION
             </label>
-            <input
-              type="text"
+            <textarea
+              // type="textarea"
               name="comment"
               onChange={commentChangeHandler}
               value={commentText}

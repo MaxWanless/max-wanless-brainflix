@@ -14,11 +14,13 @@
     padding: 2rem;
   }
   &__title {
+    font-size: 2.1rem;
     margin-bottom: 2rem;
-    font-weight: 400;
+    font-weight: 600;
     @include tablet {
+      font-size: 2.5rem;
       font-weight: 700;
-      border-bottom: 1px solid $secondary-color-mercury;
+      border-bottom: 2px solid $secondary-color-mercury;
       padding-bottom: 2rem;
     }
   }

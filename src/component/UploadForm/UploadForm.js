@@ -97,11 +97,11 @@ function UploadForm() {
               <label className="form__label" htmlFor="#description">
                 ADD A VIDEO DESCRIPTION
               </label>
-              <input
-                className={`form__input${
+              <textarea
+                className={`form__input form__input--description${
                   titleDescription ? "" : " form__input--invalid"
                 }`}
-                type="text"
+                rows="5"
                 id="description"
                 name="description"
                 placeholder="Add a description to your video"
