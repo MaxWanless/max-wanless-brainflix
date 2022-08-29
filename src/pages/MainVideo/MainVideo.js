@@ -6,6 +6,7 @@ import VideoPlayer from "../../component/VideoPlayer/VideoPlayer";
 import VideoDescription from "../../component/VideoDescription/VideoDescription";
 import CommentSection from "../../component/CommentSection/CommentSection";
 import VideoList from "../../component/VideoList/VideoList";
+// `https://project-2-api.herokuapp.com/videos/${currentVideoId}?api_key=${api_key}`
 
 function MainVideo({ videos, api_key }) {
   // Create state to recall API on comment delete
@@ -33,9 +34,7 @@ function MainVideo({ videos, api_key }) {
   // On page load, comment submission or deletion call API, If API call fails Navigate to 404 page
   useEffect(() => {
     axios
-      .get(
-        `https://project-2-api.herokuapp.com/videos/${currentVideoId}?api_key=${api_key}`
-      )
+      .get(`http://localhost:8080/videos/${currentVideoId}`)
       ?.then((response) => {
         setCurrentVideo(response.data);
         setLoading(false);
