@@ -9,10 +9,6 @@ import VideoList from "../../component/VideoList/VideoList";
 // `https://project-2-api.herokuapp.com/videos/${currentVideoId}?api_key=${api_key}`
 
 function MainVideo({ videos, api_key }) {
-  // Create state to recall API on comment delete
-  const [deleteComment, setDeleteComment] = useState(true);
-  // Create state to recall API on comment submit
-  const [submitComment, setSubmitComment] = useState(true);
   // Create state hold current video data
   const [currentVideo, setCurrentVideo] = useState(null);
   // Create state to control page loading while waiting for API
@@ -45,45 +41,7 @@ function MainVideo({ videos, api_key }) {
           setAxiosFailed(true);
         }, 2000);
       });
-  }, [currentVideoId, deleteComment, submitComment]);
-
-  // Function to handle the deletion of a comment
-  const deleteCommentHandler = (videoId, id) => {
-    axios
-      .delete(
-        `https://project-2-api.herokuapp.com/videos/${videoId}/comments/${id}?api_key=${api_key}`
-      )
-      .then((response) => {
-        setDeleteComment(!deleteComment);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  };
-  // Function to handle the submition of a new comment
-  const commentSubmitHandler = (event, videoId, userName, commentText) => {
-    event.preventDefault();
-    const isFormValid = () => {
-      if (commentText === "") {
-        return false;
-      }
-      return true;
-    };
-
-    if (isFormValid()) {
-      axios
-        .post(
-          `https://project-2-api.herokuapp.com/videos/${videoId}/comments?api_key=${api_key}`,
-          { name: userName, comment: commentText }
-        )
-        .then((response) => {
-          setSubmitComment(!submitComment);
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    }
-  };
+  }, [currentVideoId]);
 
   // If still waiting for API response show loader if not navigate to 404 page
   if (isLoading && !axiosFailed) {
@@ -113,8 +71,6 @@ function MainVideo({ videos, api_key }) {
             <VideoDescription currentVideo={currentVideo} />
             <CommentSection
               currentVideo={currentVideo}
-              deleteCommentHandler={deleteCommentHandler}
-              commentSubmitHandler={commentSubmitHandler}
             />
           </div>
           <div className="lower__video-list">

@@ -1,20 +1,76 @@
+import { useState, useEffect } from "react";
 import "./CommentSection.scss";
 import CommentForm from "../CommentForm/CommentForm";
 import Comment from "../Comment/Comment";
+import axios from "axios";
 
-const CommentSection = ({
-  currentVideo,
-  deleteCommentHandler,
-  commentSubmitHandler,
-}) => {
+const CommentSection = ({ currentVideo }) => {
+  // Create state to recall API on comment delete
+  const [deleteComment, setDeleteComment] = useState(true);
+  // Create state to recall API on comment submit
+  const [submitComment, setSubmitComment] = useState(true);
+  //Create state to hold comment Array
+  const [commentArr, setCommentArr] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8080/videos/${currentVideo.id}/comments`)
+      .then((response) => {
+        setCommentArr(response.data);
+      })
+      .catch((error) => {
+        console.log(currentVideo.id);
+        setTimeout(() => {
+          console.log(error);
+        }, 3000);
+      });
+  }, [currentVideo, deleteComment, submitComment]);
+
+  // Function to handle the deletion of a comment
+  const deleteCommentHandler = (videoId, id) => {
+    axios
+      .delete(`http://localhost:8080/videos/${currentVideo.id}/comments${id}`)
+      .then((response) => {
+        setDeleteComment(!deleteComment);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  // Function to handle the submition of a new comment
+  const commentSubmitHandler = (event, videoId, userName, commentText) => {
+    event.preventDefault();
+    const isFormValid = () => {
+      if (commentText === "") {
+        return false;
+      }
+      return true;
+    };
+
+    if (isFormValid()) {
+      axios
+        .post(`http://localhost:8080/videos/${videoId}/comments`, {
+          name: userName,
+          comment: commentText,
+        })
+        .then((response) => {
+          setSubmitComment(!submitComment);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
+  };
+
   return (
     <div className="comment-section">
-      <h4>{currentVideo.comments.length + " Comments"}</h4>
+      <h4>{commentArr.length + " Comments"}</h4>
       <CommentForm
         videoId={currentVideo.id}
         commentSubmitHandler={commentSubmitHandler}
       />
-      {currentVideo.comments
+      {commentArr
         .sort((a, b) => b.timestamp - a.timestamp)
         .map((comment) => (
           <Comment
