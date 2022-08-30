@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import "./UploadForm.scss";
@@ -49,9 +50,19 @@ function UploadForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (isFormValid()) {
-      setTitle("");
-      setDescription("");
-      navigateSuccessPage();
+      let newVideo = {
+        title: title,
+        description: description,
+      };
+      console.log(JSON.stringify(newVideo));
+      axios
+        .post("http://localhost:8080/videos/newVideo", newVideo)
+        .then((response) => {
+          setTitle("");
+          setDescription("");
+          navigateSuccessPage();
+          console.log(response.data);
+        });
     } else {
       if (!isDescriptionValid()) {
         setDescriptionValid(false);
