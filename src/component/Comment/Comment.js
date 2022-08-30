@@ -1,6 +1,11 @@
 import "./Comment.scss";
 
-const Comment = ({ comment, videoId, deleteCommentHandler }) => {
+const Comment = ({
+  comment,
+  videoId,
+  deleteCommentHandler,
+  likeCommentHandler,
+}) => {
   // Destructure comment object
   let { comment: commentText, name, timestamp, id, likes } = comment;
   // Function to create relative timestamp
@@ -76,7 +81,12 @@ const Comment = ({ comment, videoId, deleteCommentHandler }) => {
         </div>
         <div className="comment__interaction-container">
           <p className="comment__interaction-text">{`Likes: ${likes}`}</p>
-          <button className="comment__interaction-button--like">👍</button>
+          <button
+            className="comment__interaction-button--like"
+            onClick={() => likeCommentHandler(videoId, id)}
+          >
+            👍
+          </button>
           <button
             className="comment__interaction-button--delete"
             onClick={() => deleteCommentHandler(videoId, id)}

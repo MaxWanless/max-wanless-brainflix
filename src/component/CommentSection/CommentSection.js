@@ -7,11 +7,14 @@ import axios from "axios";
 const CommentSection = ({ currentVideo }) => {
   // Create state to recall API on comment delete
   const [deleteComment, setDeleteComment] = useState(true);
+  // Create state to recall API on comment Like
+  const [likeComment, setlikeComment] = useState(true);
   // Create state to recall API on comment submit
   const [submitComment, setSubmitComment] = useState(true);
   //Create state to hold comment Array
   const [commentArr, setCommentArr] = useState([]);
 
+  // Use effect to refresh the comment section on interaction
   useEffect(() => {
     axios
       .get(`http://localhost:8080/videos/${currentVideo.id}/comments`)
@@ -24,7 +27,7 @@ const CommentSection = ({ currentVideo }) => {
           console.log(error);
         }, 3000);
       });
-  }, [currentVideo, deleteComment, submitComment]);
+  }, [currentVideo, deleteComment, submitComment, likeComment]);
 
   // Function to handle the deletion of a comment
   const deleteCommentHandler = (videoId, id) => {
@@ -32,6 +35,17 @@ const CommentSection = ({ currentVideo }) => {
       .delete(`http://localhost:8080/videos/${videoId}/comments/${id}`)
       .then((response) => {
         setDeleteComment(!deleteComment);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const likeCommentHandler = (videoId, commentId) => {
+    axios
+      .put(`http://localhost:8080/videos/${videoId}/comments/${commentId}`)
+      .then((response) => {
+        setlikeComment(!likeComment);
       })
       .catch((error) => {
         console.log(error);
@@ -78,6 +92,7 @@ const CommentSection = ({ currentVideo }) => {
             comment={comment}
             videoId={currentVideo.id}
             deleteCommentHandler={deleteCommentHandler}
+            likeCommentHandler={likeCommentHandler}
           />
         ))}
     </div>
