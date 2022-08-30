@@ -29,7 +29,7 @@ const CommentSection = ({ currentVideo }) => {
   // Function to handle the deletion of a comment
   const deleteCommentHandler = (videoId, id) => {
     axios
-      .delete(`http://localhost:8080/videos/${currentVideo.id}/comments${id}`)
+      .delete(`http://localhost:8080/videos/${videoId}/comments/${id}`)
       .then((response) => {
         setDeleteComment(!deleteComment);
       })
