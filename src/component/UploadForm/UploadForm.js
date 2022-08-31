@@ -8,6 +8,8 @@ function UploadForm() {
   const [title, setTitle] = useState("");
   // Create state to update description input text on change
   const [description, setDescription] = useState("");
+  // Create state to update description input text on change
+  const [fileData, setFileData] = useState();
   // Create state to trigger page redirect on succesfull Upload
   const [formSubmitted, setFormSubmitted] = useState(false);
   // Create state to update when Title input data is valid
@@ -24,6 +26,10 @@ function UploadForm() {
   const handleChangeDescription = (event) => {
     setDescriptionValid(true);
     setDescription(event.target.value);
+  };
+  // Function to update file type input on change
+  const handleChangeImage = (event) => {
+    setFileData(event.target.files[0]);
   };
   // Function to check if title input value is valid
   const isTitleValid = () => {
@@ -50,19 +56,17 @@ function UploadForm() {
   const handleSubmit = (event) => {
     event.preventDefault();
     if (isFormValid()) {
-      let newVideo = {
-        title: title,
-        description: description,
-      };
-      console.log(JSON.stringify(newVideo));
-      axios
-        .post("http://localhost:8080/videos/newVideo", newVideo)
-        .then((response) => {
-          setTitle("");
-          setDescription("");
-          navigateSuccessPage();
-          console.log(response.data);
-        });
+      let newVideo = new FormData();
+      newVideo.append("title", title);
+      newVideo.append("description", description);
+      newVideo.append("image", fileData);
+
+      axios.post("http://localhost:8080/videos", newVideo).then((response) => {
+        setTitle("");
+        setDescription("");
+        navigateSuccessPage();
+        console.log(response.data);
+      });
     } else {
       if (!isDescriptionValid()) {
         setDescriptionValid(false);
@@ -120,11 +124,19 @@ function UploadForm() {
                 value={description}
               />
             </div>
-          </div>
+          </div>{" "}
+          <input
+            className="button__upload-file"
+            type="file"
+            id="myFile"
+            name="thumbnailImage"
+            onChange={handleChangeImage}
+          />
           <div className="button__container">
             <button type="submit" className="button">
               PUBLISH
             </button>
+
             <Link to="/" className="button__cancel">
               CANCEL
             </Link>

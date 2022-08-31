@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import "./UploadSuccess.scss";
 
-function UploadSuccess() {
+function UploadSuccess({ trackUpload }) {
   // Create state to trigger upload complete
   const [uploadComplete, setUploadComplete] = useState(false);
 
@@ -10,6 +10,7 @@ function UploadSuccess() {
     // simulate video upload,  set uploadComplete state after 2 seconds
     setTimeout(() => {
       setUploadComplete(true);
+        trackUpload();
     }, 2000);
   }, []);
 
