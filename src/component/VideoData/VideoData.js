@@ -1,5 +1,5 @@
 import "./VideoData.scss";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import viewsIcon from "../../assets/Icons/views.svg";
 import likesIcon from "../../assets/Icons/likes.svg";
@@ -15,6 +15,10 @@ const VideoData = ({ currentVideo }) => {
     postDate = day + "/" + month + "/" + year;
     return postDate;
   };
+
+  useEffect(() => {
+    setVideoLikes(currentVideo.likes);
+  }, [currentVideo]);
 
   const likeHandler = () => {
     axios
