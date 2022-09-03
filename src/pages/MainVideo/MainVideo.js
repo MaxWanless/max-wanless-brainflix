@@ -6,7 +6,6 @@ import VideoPlayer from "../../component/VideoPlayer/VideoPlayer";
 import VideoDescription from "../../component/VideoDescription/VideoDescription";
 import CommentSection from "../../component/CommentSection/CommentSection";
 import VideoList from "../../component/VideoList/VideoList";
-// `https://project-2-api.herokuapp.com/videos/${currentVideoId}?api_key=${api_key}`
 
 function MainVideo({ videos }) {
   // Create state hold current video data
@@ -41,7 +40,6 @@ function MainVideo({ videos }) {
         }, 2000);
       });
   }, [currentVideoId]);
-
   // If still waiting for API response show loader if not navigate to 404 page
   if (isLoading && !axiosFailed) {
     return (

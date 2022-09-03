@@ -5,6 +5,7 @@ import viewsIcon from "../../assets/Icons/views.svg";
 import likesIcon from "../../assets/Icons/likes.svg";
 
 const VideoData = ({ currentVideo }) => {
+  // Create state hold current video like data
   const [videoLikes, setVideoLikes] = useState(currentVideo.likes);
   // Function to format timestamp to readable date
   const formatDate = (timeStamp) => {
@@ -15,11 +16,11 @@ const VideoData = ({ currentVideo }) => {
     postDate = day + "/" + month + "/" + year;
     return postDate;
   };
-
+  //useEffect to update the video likes on page load
   useEffect(() => {
     setVideoLikes(currentVideo.likes);
   }, [currentVideo]);
-
+  //Function to handle video likes
   const likeHandler = () => {
     axios
       .put(`http://localhost:8080/videos/${currentVideo.id}`)

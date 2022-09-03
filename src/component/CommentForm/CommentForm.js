@@ -5,12 +5,11 @@ const CommentForm = ({ videoId, commentSubmitHandler }) => {
   // Create state to update comment text input on change
   const [commentText, setCommentText] = useState("");
   // User Name for "Logged" in user
-  const userName = "Mohan Muruge";
+  const userName = "Max Wanless";
   // Function to update comment text input on change
   const commentChangeHandler = (event) => {
     setCommentText(event.target.value);
   };
-
 
   return (
     <>
@@ -21,7 +20,7 @@ const CommentForm = ({ videoId, commentSubmitHandler }) => {
         <form
           className="comment-form"
           onSubmit={(event) => {
-            commentSubmitHandler(event, videoId, userName, commentText)
+            commentSubmitHandler(event, videoId, userName, commentText);
             setCommentText("");
           }}
         >
@@ -30,7 +29,6 @@ const CommentForm = ({ videoId, commentSubmitHandler }) => {
               JOIN THE CONVERSATION
             </label>
             <textarea
-              // type="textarea"
               name="comment"
               onChange={commentChangeHandler}
               value={commentText}

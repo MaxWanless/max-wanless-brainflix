@@ -13,6 +13,8 @@ const CommentSection = ({ currentVideo }) => {
   const [submitComment, setSubmitComment] = useState(true);
   //Create state to hold comment Array
   const [commentArr, setCommentArr] = useState([]);
+  //Create state to hold comment Array
+  const [isLoading, setLoading] = useState(true);
 
   // Use effect to refresh the comment section on interaction
   useEffect(() => {
@@ -41,6 +43,7 @@ const CommentSection = ({ currentVideo }) => {
       });
   };
 
+  // Function to handle the liking a comment
   const likeCommentHandler = (videoId, commentId) => {
     axios
       .put(`http://localhost:8080/videos/${videoId}/comments/${commentId}`)
@@ -61,7 +64,7 @@ const CommentSection = ({ currentVideo }) => {
       }
       return true;
     };
-
+    // Check to see if the form fields are valid
     if (isFormValid()) {
       axios
         .post(`http://localhost:8080/videos/${videoId}/comments`, {
@@ -77,6 +80,7 @@ const CommentSection = ({ currentVideo }) => {
     }
   };
 
+
   return (
     <div className="comment-section">
       <h4>{commentArr.length + " Comments"}</h4>
@@ -84,17 +88,21 @@ const CommentSection = ({ currentVideo }) => {
         videoId={currentVideo.id}
         commentSubmitHandler={commentSubmitHandler}
       />
-      {commentArr
-        .sort((a, b) => b.timestamp - a.timestamp)
-        .map((comment) => (
-          <Comment
-            key={comment.id}
-            comment={comment}
-            videoId={currentVideo.id}
-            deleteCommentHandler={deleteCommentHandler}
-            likeCommentHandler={likeCommentHandler}
-          />
-        ))}
+      {commentArr.length > 0 ? (
+        commentArr
+          .sort((a, b) => b.timestamp - a.timestamp)
+          .map((comment) => (
+            <Comment
+              key={comment.id}
+              comment={comment}
+              videoId={currentVideo.id}
+              deleteCommentHandler={deleteCommentHandler}
+              likeCommentHandler={likeCommentHandler}
+            />
+          ))
+      ) : (
+        <div className="empty-comments">NO COMMENTS</div>
+      )}
     </div>
   );
 };

@@ -91,7 +91,7 @@ function UploadForm() {
         <form className="form" onSubmit={handleSubmit}>
           <div className="test-container">
             <div className="thumbnail">
-              <p className="thumbnail__label">VIDEO THUMBNAIL</p>
+              <p className="thumbnail__label">VIDEO THUMBNAIL (DEFAULT)</p>
               <div className="thumbnail__img"></div>
             </div>
             <div className="form__input-container">
@@ -123,15 +123,18 @@ function UploadForm() {
                 onChange={handleChangeDescription}
                 value={description}
               />
+              <label className="form__label" htmlFor="#myFile">
+                ADD A VIDEO THUMBNAIL (OPTIONAL)
+              </label>
+              <input
+                className="button__upload-file"
+                type="file"
+                id="myFile"
+                name="thumbnailImage"
+                onChange={handleChangeImage}
+              />
             </div>
-          </div>{" "}
-          <input
-            className="button__upload-file"
-            type="file"
-            id="myFile"
-            name="thumbnailImage"
-            onChange={handleChangeImage}
-          />
+          </div>
           <div className="button__container">
             <button type="submit" className="button">
               PUBLISH
