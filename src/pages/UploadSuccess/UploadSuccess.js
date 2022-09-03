@@ -12,7 +12,7 @@ function UploadSuccess({ trackUpload }) {
       setUploadComplete(true);
         trackUpload();
     }, 2000);
-  }, []);
+  }, [trackUpload]);
 
   // Redirect to home page when upload complete
   if (uploadComplete) {

@@ -13,8 +13,6 @@ const CommentSection = ({ currentVideo }) => {
   const [submitComment, setSubmitComment] = useState(true);
   //Create state to hold comment Array
   const [commentArr, setCommentArr] = useState([]);
-  //Create state to hold comment Array
-  const [isLoading, setLoading] = useState(true);
 
   // Use effect to refresh the comment section on interaction
   useEffect(() => {
