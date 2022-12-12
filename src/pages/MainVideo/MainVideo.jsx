@@ -1,22 +1,24 @@
-import "./MainVideo.scss";
-import React, { useState, useEffect } from "react";
+import { useContext } from "react";
 import { useParams, Navigate } from "react-router-dom";
+import "./MainVideo.scss";
 
-import axios from "../../api/axios";
+// Components
 import VideoPlayer from "../../component/VideoPlayer/VideoPlayer";
 import VideoDescription from "../../component/VideoDescription/VideoDescription";
 import CommentSection from "../../component/CommentSection/CommentSection";
 import VideoList from "../../component/VideoList/VideoList";
+import { VideoContext } from "../../context/videoContext";
+import { CurrentVideoContext } from "../../context/currentVideoContext";
 
-function MainVideo({ videos }) {
-  // Create state hold current video data
-  const [currentVideo, setCurrentVideo] = useState(null);
-  // Create state to control page loading while waiting for API
-  const [isLoading, setLoading] = useState(true);
-  // Create state to redirect to 404 page if API call fails
-  const [axiosFailed, setAxiosFailed] = useState(false);
-  // Create state to hold current video Id
-  const [currentVideoId, setCurrentVideoId] = useState(videos[0].id);
+function MainVideo() {
+  const { videos } = useContext(VideoContext);
+  const {
+    loading,
+    currentVideo,
+    axiosFailed,
+    currentVideoId,
+    setCurrentVideoId,
+  } = useContext(CurrentVideoContext);
   // Create Variable to hold video Id from address bar
   const { videoId } = useParams();
   // If there is a id from the URL and it doesnt match the
@@ -26,22 +28,9 @@ function MainVideo({ videos }) {
   } else if (!videoId && currentVideoId !== videos[0].id) {
     setCurrentVideoId(videos[0].id);
   }
-  // On page load or Id call API, If API call fails Navigate to 404 page
-  useEffect(() => {
-    axios
-      .get(`/videos/${currentVideoId}`)
-      ?.then((response) => {
-        setCurrentVideo(response.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        setTimeout(() => {
-          setAxiosFailed(true);
-        }, 2000);
-      });
-  }, [currentVideoId]);
+
   // If still waiting for API response show loader if not navigate to 404 page
-  if (isLoading && !axiosFailed) {
+  if (loading && !axiosFailed) {
     return (
       <div className="loading">
         <h1 className="loading__title">Loading</h1>
@@ -55,7 +44,7 @@ function MainVideo({ videos }) {
       </div>
     );
   }
-  if (isLoading && axiosFailed) {
+  if (loading && axiosFailed) {
     return <Navigate to="/Video-not-found" />;
   }
 
