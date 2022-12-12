@@ -2,13 +2,16 @@ import { useContext } from "react";
 import { useParams, Navigate } from "react-router-dom";
 import "./MainVideo.scss";
 
+// Context
+import { VideoContext } from "../../context/videoContext";
+import { CurrentVideoContext } from "../../context/currentVideoContext";
+
 // Components
 import VideoPlayer from "../../component/VideoPlayer/VideoPlayer";
 import VideoDescription from "../../component/VideoDescription/VideoDescription";
 import CommentSection from "../../component/CommentSection/CommentSection";
 import VideoList from "../../component/VideoList/VideoList";
-import { VideoContext } from "../../context/videoContext";
-import { CurrentVideoContext } from "../../context/currentVideoContext";
+import Loader from "../../component/Loader/Loader";
 
 function MainVideo() {
   const { videos } = useContext(VideoContext);
@@ -19,10 +22,11 @@ function MainVideo() {
     currentVideoId,
     setCurrentVideoId,
   } = useContext(CurrentVideoContext);
+
   // Create Variable to hold video Id from address bar
-  const { videoId } = useParams();
   // If there is a id from the URL and it doesnt match the
   //current Id set current Id to URL id if no URL id set to default video Id
+  const { videoId } = useParams();
   if (videoId && videoId !== currentVideoId) {
     setCurrentVideoId(videoId);
   } else if (!videoId && currentVideoId !== videos[0].id) {
@@ -31,18 +35,7 @@ function MainVideo() {
 
   // If still waiting for API response show loader if not navigate to 404 page
   if (loading && !axiosFailed) {
-    return (
-      <div className="loading">
-        <h1 className="loading__title">Loading</h1>
-        <div className="loading__dots-container">
-          <div className="loading__dots"></div>
-          <div className="loading__dots"></div>
-          <div className="loading__dots"></div>
-          <div className="loading__dots"></div>
-          <div className="loading__dots"></div>
-        </div>
-      </div>
-    );
+    return <Loader />;
   }
   if (loading && axiosFailed) {
     return <Navigate to="/Video-not-found" />;

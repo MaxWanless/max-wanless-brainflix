@@ -1,6 +1,7 @@
-# 📽️ TrailBLZR
+# 📽️ BrainFlix
 
 This project was completed as my capstone for the BrainStation Web-Development bootcamp.
+Checkout the Back-end API for this project [here][backendurl]
 
 ## Table of Contents
 
