@@ -1,7 +1,8 @@
 import "./MainVideo.scss";
 import React, { useState, useEffect } from "react";
 import { useParams, Navigate } from "react-router-dom";
-import axios from "axios";
+
+import axios from "../../api/axios";
 import VideoPlayer from "../../component/VideoPlayer/VideoPlayer";
 import VideoDescription from "../../component/VideoDescription/VideoDescription";
 import CommentSection from "../../component/CommentSection/CommentSection";
@@ -28,14 +29,13 @@ function MainVideo({ videos }) {
   // On page load or Id call API, If API call fails Navigate to 404 page
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/videos/${currentVideoId}`)
+      .get(`/videos/${currentVideoId}`)
       ?.then((response) => {
         setCurrentVideo(response.data);
         setLoading(false);
       })
       .catch((error) => {
         setTimeout(() => {
-          console.log("setTimeout");
           setAxiosFailed(true);
         }, 2000);
       });

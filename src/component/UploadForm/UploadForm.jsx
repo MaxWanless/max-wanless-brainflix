@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "../../api/axios";
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import "./UploadForm.scss";
@@ -61,7 +61,7 @@ function UploadForm() {
       newVideo.append("description", description);
       newVideo.append("image", fileData);
 
-      axios.post("http://localhost:8080/videos", newVideo).then((response) => {
+      axios.post("/videos", newVideo).then((response) => {
         setTitle("");
         setDescription("");
         navigateSuccessPage();

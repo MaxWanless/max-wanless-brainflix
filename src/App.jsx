@@ -1,6 +1,6 @@
 import "./App.scss";
 import { useState, useEffect } from "react";
-import axios from "axios";
+import axios from "./api/axios";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Header from "./component/Header/Header";
 import MainVideo from "./pages/MainVideo/MainVideo";
@@ -22,7 +22,7 @@ function App() {
 
   // On page load upload video list
   useEffect(() => {
-    axios.get("http://localhost:8080/videos").then((response) => {
+    axios.get("/videos").then((response) => {
       setVideos(response.data);
       setLoading(false);
     });

@@ -1,6 +1,6 @@
 import "./VideoData.scss";
 import { useEffect, useState } from "react";
-import axios from "axios";
+import axios from "../../api/axios";
 import viewsIcon from "../../assets/Icons/views.svg";
 import likesIcon from "../../assets/Icons/likes.svg";
 
@@ -23,7 +23,7 @@ const VideoData = ({ currentVideo }) => {
   //Function to handle video likes
   const likeHandler = () => {
     axios
-      .put(`http://localhost:8080/videos/${currentVideo.id}`)
+      .put(`/videos/${currentVideo.id}`)
       .then((response) => {
         console.log(response.data.likes);
         setVideoLikes(response.data.likes);

@@ -39,7 +39,7 @@ Please follow the link to view a live [Demo](https://trailblzr-client.herokuapp.
 
 ## 📸 Screenshots
 
-<img align="left" alt="Screenshots" width="100%" src="./client\src\assets\screenshots\BrainFlix_desktop.png" />
+<img align="left" alt="Screenshots" width="100%" src="./src\assets\screenshots\BrainFlix_desktop.png" />
 desktop and mobile dashboards
 <br />
 

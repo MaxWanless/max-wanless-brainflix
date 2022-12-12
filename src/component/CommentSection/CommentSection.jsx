@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import "./CommentSection.scss";
 import CommentForm from "../CommentForm/CommentForm";
 import Comment from "../Comment/Comment";
-import axios from "axios";
+import axios from "../../api/axios";
 
 const CommentSection = ({ currentVideo }) => {
   // Create state to recall API on comment delete
@@ -17,7 +17,7 @@ const CommentSection = ({ currentVideo }) => {
   // Use effect to refresh the comment section on interaction
   useEffect(() => {
     axios
-      .get(`http://localhost:8080/videos/${currentVideo.id}/comments`)
+      .get(`/videos/${currentVideo.id}/comments`)
       .then((response) => {
         setCommentArr(response.data);
       })
@@ -32,7 +32,7 @@ const CommentSection = ({ currentVideo }) => {
   // Function to handle the deletion of a comment
   const deleteCommentHandler = (videoId, id) => {
     axios
-      .delete(`http://localhost:8080/videos/${videoId}/comments/${id}`)
+      .delete(`/videos/${videoId}/comments/${id}`)
       .then((response) => {
         setDeleteComment(!deleteComment);
       })
@@ -77,7 +77,6 @@ const CommentSection = ({ currentVideo }) => {
         });
     }
   };
-
 
   return (
     <div className="comment-section">
