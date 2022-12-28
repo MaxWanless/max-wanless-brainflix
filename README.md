@@ -16,7 +16,8 @@ Checkout the Back-end API for this project [here][backendurl]
 
 ## 📲 Live Demo
 
-Please follow the link to view a live [Demo](https://trailblzr-client.herokuapp.com/)
+Please follow the link to view a live Demo (Stay Tuned!) 
+<!-- [Demo](https://trailblzr-client.herokuapp.com/) -->
 
 ## 💻 Tech Stack
 
